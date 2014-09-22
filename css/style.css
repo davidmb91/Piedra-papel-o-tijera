@@ -1,0 +1,20 @@
+
+body {
+	text-align: center;
+}
+
+.iElection {
+	font-size: 120px;
+}
+
+.thumbElection, .thumbResult {
+	font-size: 20px;
+}
+
+.playArea {
+	padding: 50px 0;
+}
+
+.idElection {
+	margin: 10px 0 15px 0;
+}
