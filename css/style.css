@@ -20,7 +20,7 @@ body {
 }
 
 
-.notSelectOption {
+#notSelectOption {
 	opacity: 0.5;
 }
 
@@ -36,4 +36,16 @@ body {
 
 #resButton {
 	padding-top: 15px;
+}
+
+.messageWin {
+	color: #4CBB17;
+}
+
+.messageDraw {
+	color: orange;
+}
+
+.messageLost {
+	color: red;
 }

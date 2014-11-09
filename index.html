@@ -61,11 +61,10 @@
 			var otrasOpciones = document.getElementsByClassName("thumbElection");
 
 			for (var i = 0; i < otrasOpciones.length; i++) {
-				if (otrasOpciones[i].classList[1] != queJugada) {
-					// Desmarcamos opciones no elegidas
-					otrasOpciones[i].className += " "+ "notSelectOption"
-				} else {
+					otrasOpciones[i].id = "notSelectOption";
+				if (otrasOpciones[i].classList[1] == queJugada) {
 					// Mostramos en area de jugada nuestra eleccion
+					otrasOpciones[i].id = "";
 					document.getElementById('userSelection').className = "fa iElection " + queJugada;
 				}
 			};
@@ -127,6 +126,7 @@
 		function actualizarResultados(resultado) {
 			switch(resultado) {
 				case 0:	// Victoria
+				document.getElementById('messageResult').className = "messageWin";
 				document.getElementById('messageResult').innerHTML = "Has ganado!!"
 				var resAct = parseInt(document.getElementById('resWin').innerHTML);
 				resAct++;
@@ -134,6 +134,7 @@
 				break;
 
 				case 1: // Derrota
+				document.getElementById('messageResult').className = "messageLost";
 				document.getElementById('messageResult').innerHTML = "Has perdido!!"
 				var resAct = parseInt(document.getElementById('resLost').innerHTML);
 				resAct++;
@@ -141,6 +142,7 @@
 				break;
 
 				case 2: // Empate
+				document.getElementById('messageResult').className = "messageDraw";
 				document.getElementById('messageResult').innerHTML = "Empate!!"
 				var resAct = parseInt(document.getElementById('resDraw').innerHTML);
 				resAct++;
