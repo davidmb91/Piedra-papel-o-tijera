@@ -2,11 +2,12 @@
   "name": "Piedra, papel o tijeras",
   "description": "El clásico juego de toda la vida del piedra, papel o tijeras implementado en HTML5, CSS3 y JavaScript.",
   "icons": {
-    "128": "/img/icons/icon_128.png",
-    "64": "/img/icons/icon_64.png",
-    "48": "/img/icons/icon_48.png",
     "32": "/img/icons/icon_32.png",
-    "24": "/img/icons/icon_24.png"
+    "60": "/img/icons/icon_60.png",
+    "90": "/img/icons/icon_90.png",
+    "120": "/img/icons/icon_120.png",
+    "128": "/img/icons/icon_128.png",
+    "256": "/img/icons/icon_256.png"
   },
   "developer": {
     "name": "David Moreno Buj",
