@@ -14,9 +14,9 @@
 <body>
 	<div class="container">
 		<div class="row results">
-			<div class="col-xs-4"><i class="fa fa-trophy thumbResult"></i> 0</div>
-			<div class="col-xs-4"><i class="fa fa-thumbs-o-down thumbResult"></i> 0</div>
-			<div class="col-xs-4"><i class="fa fa-pause fa-rotate-90 thumbResult"></i> 0</div>
+			<div class="col-xs-4"><i id="resWin" class="fa fa-trophy thumbResult"> 0</i></div>
+			<div class="col-xs-4"><i id="resLost" class="fa fa-thumbs-o-down thumbResult"> 0</i></div>
+			<div class="col-xs-4"><i id="resDraw" class="fa fa-equal thumbResult"> 0</i></div>
 		</div>
 
 		<div class="row playArea">
@@ -35,21 +35,24 @@
 
 		<div class="row selectOption">
 			<div class="col-xs-12">
-				<div class="col-xs-3" onclick="opcionJugada('fa-certificate')">
+				<div class="col-xs-4" onclick="opcionJugada('fa-certificate')">
 					<i class="fa fa-certificate thumbElection">
 						<div class="col-xs-12">Piedra</div>
 					</i>
 				</div>
-				<div class="col-xs-3" onclick="opcionJugada('fa-file-o')">
+				<div class="col-xs-4" onclick="opcionJugada('fa-file-o')">
 					<i class="fa fa-file-o thumbElection">
 						<div class="col-xs-12">Papel</div>
 					</i>
 				</div>
-				<div class="col-xs-3" onclick="opcionJugada('fa-scissors')">
+				<div class="col-xs-4" onclick="opcionJugada('fa-scissors')">
 					<i class="fa fa-scissors thumbElection">
 						<div class="col-xs-12">Tijeras</div>
 					</i>
 				</div>
+			</div>
+			<div id="resButton" class="col-xs-12">
+				<button onclick="window.location.reload()" type="button" class="btn btn-warning">Reinicar</button>
 			</div>
 		</div>
 	</div>
@@ -76,13 +79,13 @@
 					document.getElementById('cpuSelection').className = "fa iElection fa-certificate";
 					cpuRandomSelection = "fa-certificate";
 					if (queJugada == "fa-certificate") {
-						document.getElementById('messageResult').innerHTML = "Empate!!"
+						actualizarResultados(2);
 					} else {
 						if (queJugada == "fa-file-o") {
-							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+							actualizarResultados(0);
 						} else {
 							if (queJugada == "fa-scissors") {
-								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+								actualizarResultados(1);
 							};
 						}
 					}
@@ -91,13 +94,13 @@
 					document.getElementById('cpuSelection').className = "fa iElection fa-file-o";
 					cpuRandomSelection = "fa-file-o";
 					if (queJugada == "fa-file-o") {
-						document.getElementById('messageResult').innerHTML = "Empate!!"
+						actualizarResultados(2);
 					} else {
 						if (queJugada == "fa-scissors") {
-							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+							actualizarResultados(0);
 						} else {
 							if (queJugada == "fa-certificate") {
-								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+								actualizarResultados(1);
 							};
 						}
 					}
@@ -106,19 +109,44 @@
 					document.getElementById('cpuSelection').className = "fa iElection fa-scissors";
 					cpuRandomSelection = "fa-scissors";
 					if (queJugada == "fa-scissors") {
-						document.getElementById('messageResult').innerHTML = "Empate!!"
+						actualizarResultados(2);
 					} else {
 						if (queJugada == "fa-certificate") {
-							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+							actualizarResultados(0);
 						} else {
 							if (queJugada == "fa-file-o") {
-								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+								actualizarResultados(1);
 							};
 						}
 					}
 			        break;
 			}
 
+		}
+
+		function actualizarResultados(resultado) {
+			switch(resultado) {
+				case 0:	// Victoria
+				document.getElementById('messageResult').innerHTML = "Has ganado!!"
+				var resAct = parseInt(document.getElementById('resWin').innerHTML);
+				resAct++;
+				document.getElementById('resWin').innerHTML = " " + resAct;
+				break;
+
+				case 1: // Derrota
+				document.getElementById('messageResult').innerHTML = "Has perdido!!"
+				var resAct = parseInt(document.getElementById('resLost').innerHTML);
+				resAct++;
+				document.getElementById('resLost').innerHTML = " " + resAct;
+				break;
+
+				case 2: // Empate
+				document.getElementById('messageResult').innerHTML = "Empate!!"
+				var resAct = parseInt(document.getElementById('resDraw').innerHTML);
+				resAct++;
+				document.getElementById('resDraw').innerHTML = " " + resAct;
+				break;
+			}
 		}
 	</script>
 </body>

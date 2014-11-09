@@ -23,3 +23,17 @@ body {
 .notSelectOption {
 	opacity: 0.5;
 }
+
+/* Icono 'equal' estilo font-awesome personalizado */
+.fa-equal {
+    font-family: Arial;
+}
+
+.fa-equal:before {
+    content: "=";
+}
+/* Fin personalizacion 'equal' */
+
+#resButton {
+	padding-top: 15px;
+}
