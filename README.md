@@ -10,6 +10,6 @@ El clásico juego de toda la vida del “[Piedra, papel o tijera](http://es.wiki
 ### Implementación pensada 
 para el curso de [Firefox OS de devcode.la](http://devcode.la/firefoxos)
 
-### Author
+### Autor
 
 * David Moreno Buj [Tw](https://twitter.com/davidmb91)
