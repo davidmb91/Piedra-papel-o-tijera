@@ -14,38 +14,38 @@
 <body>
 	<div class="container">
 		<div class="row results">
-			<div class="col-xs-4"><i class="fa fa-trophy thumbResult"> 0</i></div>
-			<div class="col-xs-4"><i class="fa fa-thumbs-o-down thumbResult"> 0</i></div>
-			<div class="col-xs-4"><i class="fa fa-bars thumbResult"> 0</i></div>
+			<div class="col-xs-4"><i class="fa fa-trophy thumbResult"></i> 0</div>
+			<div class="col-xs-4"><i class="fa fa-thumbs-o-down thumbResult"></i> 0</div>
+			<div class="col-xs-4"><i class="fa fa-pause fa-rotate-90 thumbResult"></i> 0</div>
 		</div>
 
 		<div class="row playArea">
 			<div class="cols-xs-8">
 				<div class="col-xs-6">
-					<i class="fa fa-scissors iElection"></i>
+					<i class="fa fa-question iElection" id="userSelection"></i>
 					<div class="col-xs-12 idElection">Tu elección</div>
 				</div>
 				<div class="col-xs-6">
-					<i class="fa fa-file-o iElection"></i>
+					<i class="fa fa-question iElection" id="cpuSelection"></i>
 					<div class="col-xs-12 idElection">CPU</div>
 				</div>
-				<h2 class="messageResult">¡HAS GANADO!</h2>
+				<h2 id="messageResult"></h2>
 			</div>
 		</div>
 
 		<div class="row selectOption">
 			<div class="col-xs-12">
-				<div class="col-xs-3">
+				<div class="col-xs-3" onclick="opcionJugada('fa-certificate')">
 					<i class="fa fa-certificate thumbElection">
 						<div class="col-xs-12">Piedra</div>
 					</i>
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-3" onclick="opcionJugada('fa-file-o')">
 					<i class="fa fa-file-o thumbElection">
 						<div class="col-xs-12">Papel</div>
 					</i>
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-3" onclick="opcionJugada('fa-scissors')">
 					<i class="fa fa-scissors thumbElection">
 						<div class="col-xs-12">Tijeras</div>
 					</i>
@@ -53,5 +53,73 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function opcionJugada(queJugada) {
+			var otrasOpciones = document.getElementsByClassName("thumbElection");
+
+			for (var i = 0; i < otrasOpciones.length; i++) {
+				if (otrasOpciones[i].classList[1] != queJugada) {
+					// Desmarcamos opciones no elegidas
+					otrasOpciones[i].className += " "+ "notSelectOption"
+				} else {
+					// Mostramos en area de jugada nuestra eleccion
+					document.getElementById('userSelection').className = "fa iElection " + queJugada;
+				}
+			};
+
+
+			// Mostramos en area de juego la eleccion de CPU
+			var cpuRandomSelection = Math.floor((Math.random() * 3) + 1);
+
+			switch(cpuRandomSelection) {
+			    case 1:
+					document.getElementById('cpuSelection').className = "fa iElection fa-certificate";
+					cpuRandomSelection = "fa-certificate";
+					if (queJugada == "fa-certificate") {
+						document.getElementById('messageResult').innerHTML = "Empate!!"
+					} else {
+						if (queJugada == "fa-file-o") {
+							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+						} else {
+							if (queJugada == "fa-scissors") {
+								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+							};
+						}
+					}
+			        break;
+			    case 2:
+					document.getElementById('cpuSelection').className = "fa iElection fa-file-o";
+					cpuRandomSelection = "fa-file-o";
+					if (queJugada == "fa-file-o") {
+						document.getElementById('messageResult').innerHTML = "Empate!!"
+					} else {
+						if (queJugada == "fa-scissors") {
+							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+						} else {
+							if (queJugada == "fa-certificate") {
+								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+							};
+						}
+					}
+			        break;
+			    case 3:
+					document.getElementById('cpuSelection').className = "fa iElection fa-scissors";
+					cpuRandomSelection = "fa-scissors";
+					if (queJugada == "fa-scissors") {
+						document.getElementById('messageResult').innerHTML = "Empate!!"
+					} else {
+						if (queJugada == "fa-certificate") {
+							document.getElementById('messageResult').innerHTML = "Has ganado!!"
+						} else {
+							if (queJugada == "fa-file-o") {
+								document.getElementById('messageResult').innerHTML = "Has perdido!!"
+							};
+						}
+					}
+			        break;
+			}
+
+		}
+	</script>
 </body>
 </html>

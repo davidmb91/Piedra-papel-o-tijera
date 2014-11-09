@@ -18,3 +18,8 @@ body {
 .idElection {
 	margin: 10px 0 15px 0;
 }
+
+
+.notSelectOption {
+	opacity: 0.5;
+}
