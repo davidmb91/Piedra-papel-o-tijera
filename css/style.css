@@ -49,3 +49,7 @@ body {
 .messageLost {
 	color: red;
 }
+
+h3	{
+	font-size: 20px;
+}
